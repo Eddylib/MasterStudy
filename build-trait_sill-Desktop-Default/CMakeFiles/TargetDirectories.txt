@@ -1,1 +1,1 @@
-/home/libaoyu/qtcreater_ws/learn_cpp_base/build-trait_sill-Desktop-Default/CMakeFiles/trait_sill.dir
+/home/libaoyu/qtcreater_ws/learn_cpp_base/build-trait_sill-Desktop-Default/CMakeFiles/main.dir

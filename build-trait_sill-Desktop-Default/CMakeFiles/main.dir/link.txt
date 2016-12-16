@@ -1,0 +1,1 @@
+/usr/bin/g++       CMakeFiles/main.dir/src/main_traits.cpp.o  -o main  -L./lib -rdynamic 

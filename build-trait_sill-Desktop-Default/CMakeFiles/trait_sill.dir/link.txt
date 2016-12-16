@@ -1,1 +1,1 @@
-/usr/bin/g++       CMakeFiles/trait_sill.dir/main.cpp.o  -o trait_sill -rdynamic 
+/usr/bin/g++       CMakeFiles/trait_sill.dir/main.cpp.o  -o trait_sill  -L. -rdynamic 
