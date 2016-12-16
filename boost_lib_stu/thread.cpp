@@ -9,8 +9,8 @@ void hello()
 int main(int argc, char *argv[])
 {
     cout << "Hello World!" << endl;
+    //while instance is initialled the thread begins
     boost::thread thrd(&hello);
     thrd.join();
-    fgetc(stdin);
     return 0;
 }

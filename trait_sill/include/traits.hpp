@@ -11,7 +11,6 @@ public:
     static AccT zero(){
         return 0;
     }
-
 };
 template<>
 class AccumationTraits<short>{
