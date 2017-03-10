@@ -4,5 +4,4 @@ INCLUDE_DIRECTORIES( ${EIGEN3_INCLUDE_DIR} )
 ENDIF(EIGEN3_FOUND)
 
 INCLUDE_DIRECTORIES( ./Sophus/sophus )
-#add_executable(so3test ./Sophus/sophus/test_so3.cpp)
 add_executable(so3doc sophusdoc.cpp)
