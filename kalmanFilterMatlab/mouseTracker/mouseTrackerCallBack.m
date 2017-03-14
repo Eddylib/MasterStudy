@@ -10,8 +10,9 @@ function [] = mouseTrackerCallBack()
     global Q
     global R
     global r
-    global N
+    global N M
     global C
+    global A
     
     global guicount
     guicount = guicount+1;
@@ -21,36 +22,27 @@ function [] = mouseTrackerCallBack()
         %[ xnew,Pnew ] = kalmanFilter( x,P,A,v,Q,y,C,R )
         %获取观测值，观测值就是鼠标值加上一个噪声
             currPt = get(gca, 'CurrentPoint');
-            Xreal(:,curr) = currPt(1,1:2)';
-            Ymeasure(:,curr) = Xreal(:,curr) + r*randn(N,1);
+            %需根据模型更改的部分
+                Xreal(1:2,curr) = currPt(1,1:2)';
+                Ymeasure(:,curr) = Xreal(1:2,curr) + r*randn(M,1);
             %注意，为了较好的表示平移，采用齐次坐标
-            xin = [Xestimate(:,curr-1);1];
-            zeroN = linspace(0,0,N);
-            Pin = [Pestimate(:,:,curr-1) zeroN';zeroN,0;];
-            Qin = [Q zeroN';zeroN,0;];
-            yin = [Ymeasure(:,curr);1];
-            Vin = [0;0;0];
-            Cin = [C zeroN';zeroN,1;];
-            Rin = [R zeroN';zeroN,0;];
+            xin = Xestimate(:,curr-1);
+            Pin = Pestimate(:,:,curr-1);
+            Qin = Q;
+            yin = Ymeasure(:,curr);1;
+            Vin = linspace(0,0,N)';
+            Cin = C;
+            Rin = R;
             %准备状态转移矩阵
-            %模型是匀速模型，根据齐次坐标，
-            %较好得出，如果有前两个点，那么根据前两个点的速度来构造转移矩阵，否则使用单位矩阵来代替。
-            %要达到X(k)=A*X(k-1), 的目的，且这个A是根据前两个点的速度来得到的
-            if(curr > 2)
-                A = [   1 0 Xestimate(1,curr-1) - Xestimate(1,curr-2)
-                        0 1 Xestimate(2,curr-1) - Xestimate(2,curr-2)
-                        0 0 1];
-            else
-                A = [   1 0 0
-                        0 1 0
-                        0 0 1];
-            end
+            %模型是匀速模型
+            %A 需要根据不同模型来给定
+            Ain = A;
             
             %带入卡尔曼滤波
             [Xout,Pout] =...
-            kalmanFilter(xin,Pin,A,Vin,Qin,yin,Cin,Rin );
-            Xestimate(:,curr) = Xout(1:2,1);
-            Pestimate(:,:,curr-1) = Pout(1:2,1:2);
+            kalmanFilter(xin,Pin,Ain,Vin,Qin,yin,Cin,Rin );
+            Xestimate(:,curr) = Xout;
+            Pestimate(:,:,curr-1) = Pout;
             
             %绘图
             plot([Xestimate(1,curr) Xreal(1,curr)],[Xestimate(2,curr) Xreal(2,curr)],'r')

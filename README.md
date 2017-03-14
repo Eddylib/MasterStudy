@@ -34,13 +34,13 @@ A library encapsulates opitions of `Lie Group` a wonderful tools to implement ro
 A directory includes some matlab codes.For convenient, I implement `Kalman Filter` with matlab.See details in README.md in `kalmanFilterMatlab` 
 
 * falseEKF directory lists inchoate code based on othesrs to implement a mouse tracker.
-* mouseTracker directory lists new code reconstructed by me.The README.me is also updated.
+* mouseTracker directory lists new code reconstructed by me.It is a non linear problem but I build a linear motion model to solve it. Unsuccessful.The readme.md in the mouseTracker updated.
 
 
 `traitCPP`
 ------------
 
-This directory list code ablot trait skills.But it lost. I may write it back later.
+This directory list code about trait skills.But it lost. I may write it back later.
 
 
 Installation

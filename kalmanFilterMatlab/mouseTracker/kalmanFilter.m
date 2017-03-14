@@ -20,11 +20,7 @@ function [ xnew,Pnew ] = kalmanFilter( x,P,A,v,Q,y,C,R )
     Ptmp = A*P*A' + Q;
     xtmp = A*x + v;
     %kalman gain
-    %齐次坐标引入，然而协方差矩阵上，齐次坐标那一项又必须是0,否则会造成对其他维度的影响，所以这里处理方法是做矩阵切割
-    %即把多出的那一项从矩阵中删去，以防止由于齐次坐标引入导致的奇异情况的出现
-    K = (Ptmp(1:N-1,1:N-1)*C(1:N-1,1:N-1)')/(C(1:N-1,1:N-1)*Ptmp(1:N-1,1:N-1)*C(1:N-1,1:N-1)'+R(1:N-1,1:N-1));
-    zerosN = linspace(0,0,N-1);
-    K = [K,zerosN';zerosN 1];
+    K = (Ptmp*C')/(C*Ptmp*C'+R);
     %corrector
     Pnew = (eye(N) - K*C)*Ptmp;
     xnew = xtmp + K*(y - C*xtmp);
