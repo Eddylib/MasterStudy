@@ -3,6 +3,17 @@
 
 using namespace std;
 using namespace Eigen;
+void noalias(){
+    cout<<"functions of no alias"<<endl;
+    // if the left side is not used in the left side during dot of matrics
+    // there is no need to use temp variable.
+    // common: A=C*B;   ==> tmp = C*B; A = tmp;
+    // no alias: A = C*B;
+    Matrix3f  a,b;
+    a<<1,1,1,2,2,2,3,3,3;
+    b.noalias() = a*a;
+    cout<<b<<endl;
+}
 void atstart(){
     cout<<"functions of initialization"<<endl;
     MatrixXd m(2,2);
@@ -62,5 +73,6 @@ void operationonmatrix(){
 }
 int main()
 {
-    operationonmatrix();
+    baseoperate();
+    noalias();
 }
