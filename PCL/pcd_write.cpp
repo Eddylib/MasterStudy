@@ -17,7 +17,7 @@ int
   {
     cloud.points[i].x = 1024 * rand () / (RAND_MAX + 1.0f);
     cloud.points[i].y = 1024 * rand () / (RAND_MAX + 1.0f);
-    cloud.points[i].z = 1024 * rand () / (RAND_MAX + 1.0f);
+    cloud.points[i].x= 1024 * rand () / (RAND_MAX + 1.0f);
   }
 
   pcl::io::savePCDFileASCII ("test_pcd.pcd", cloud);
