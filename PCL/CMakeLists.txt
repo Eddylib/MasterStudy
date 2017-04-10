@@ -1,4 +1,4 @@
-
+set (EIGEN3_INCLUDE_DIR "/usr/local/include/eigen3")
 
 #set(PCL_ROOT "/usr/local/share/pcl-1.8")
 

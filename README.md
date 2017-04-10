@@ -42,6 +42,19 @@ A directory includes some matlab codes.For convenient, I implement `Kalman Filte
 
 This directory list code about trait skills.But it lost. I may write it back later.
 
+`PCL`
+------------
+
+This directory list code about PCL, a great tool to draw the result of the SLAM. The Point
+Cloud Library (PCL) is a standalone, large scale, open project for 2D/3D image and point
+cloud processing.
+
+`linuxEnviroment`
+------------
+
+This directory list code about Learning API in linux enviroment, meeting the need of my team's project.
+* For now, there is just some beginning code. And will be improved soon. 
+
 
 Installation
 ------------

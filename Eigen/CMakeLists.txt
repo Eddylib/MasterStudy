@@ -1,3 +1,6 @@
+
+set (EIGEN3_INCLUDE_DIR "/usr/local/include/eigen3")
+
 find_package(Eigen3 REQUIRED)
 
 IF(EIGEN3_FOUND)

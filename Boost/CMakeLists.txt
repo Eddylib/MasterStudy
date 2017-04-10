@@ -14,3 +14,7 @@ add_compile_options(-std=c++11)
 
 add_executable(thread thread.cpp)
 target_link_libraries(thread ${Boost_LIBRARIES} )
+
+
+add_executable(condition condition.cpp)
+target_link_libraries(condition ${Boost_LIBRARIES} )
