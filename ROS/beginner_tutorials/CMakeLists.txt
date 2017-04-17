@@ -191,18 +191,38 @@ include_directories(
 # catkin_add_nosetests(test)
 include_directories(include ${catkin_INCLUDE_DIRS})
 
-add_executable(talker src/talker.cpp)
-target_link_libraries(talker ${catkin_LIBRARIES})
-add_dependencies(talker beginner_tutorials_generate_messages_cpp)
+add_executable(ros_talker src/talker.cpp)
+target_link_libraries(ros_talker ${catkin_LIBRARIES})
+add_dependencies(ros_talker beginner_tutorials_generate_messages_cpp)
 
-add_executable(listener src/listener.cpp)
-target_link_libraries(listener ${catkin_LIBRARIES})
-add_dependencies(talker ${catkin_EXPORTED_TARGETS})
+add_executable(ros_listener src/listener.cpp)
+target_link_libraries(ros_listener ${catkin_LIBRARIES})
+add_dependencies(ros_talker ${catkin_EXPORTED_TARGETS})
 
-add_executable(add_two_ints_server src/add_two_ints_server.cpp)
-target_link_libraries(add_two_ints_server ${catkin_LIBRARIES})
-add_dependencies(add_two_ints_server beginner_tutorials_gencpp)
+add_executable(ros_add_two_ints_server src/add_two_ints_server.cpp)
+target_link_libraries(ros_add_two_ints_server ${catkin_LIBRARIES})
+add_dependencies(ros_add_two_ints_server beginner_tutorials_gencpp)
 
-add_executable(add_two_ints_client src/add_two_ints_client.cpp)
-target_link_libraries(add_two_ints_client ${catkin_LIBRARIES})
-add_dependencies(add_two_ints_client beginner_tutorials_gencpp)
+add_executable(ros_add_two_ints_client src/add_two_ints_client.cpp)
+target_link_libraries(ros_add_two_ints_client ${catkin_LIBRARIES})
+add_dependencies(ros_add_two_ints_client beginner_tutorials_gencpp)
+
+
+add_executable(ros_logetic_calib_talker src/calib_talker.cpp)
+target_link_libraries(ros_logetic_calib_talker ${catkin_LIBRARIES})
+add_dependencies(ros_logetic_calib_talker beginner_tutorials_generate_messages_cpp)
+
+
+add_executable(ros_katti_0_2_calib src/calib_dataset_0_2.cpp)
+target_link_libraries(ros_katti_0_2_calib ${catkin_LIBRARIES})
+add_dependencies(ros_katti_0_2_calib beginner_tutorials_generate_messages_cpp)
+
+
+add_executable(ros_katti_3_calib src/calib_dataset_3.cpp)
+target_link_libraries(ros_katti_3_calib ${catkin_LIBRARIES})
+add_dependencies(ros_katti_3_calib beginner_tutorials_generate_messages_cpp)
+
+
+add_executable(ros_katti_4_12_calib src/calib_dataset_4_12.cpp)
+target_link_libraries(ros_katti_4_12_calib ${catkin_LIBRARIES})
+add_dependencies(ros_katti_4_12_calib beginner_tutorials_generate_messages_cpp)
