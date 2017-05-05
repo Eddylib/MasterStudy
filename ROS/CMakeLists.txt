@@ -1,4 +1,4 @@
-
+message(STATUS ROS start)
 
 find_package(Eigen3 REQUIRED)
 
@@ -8,3 +8,4 @@ ENDIF(EIGEN3_FOUND)
 
 add_subdirectory(beginner_tutorials beginner_tutorials)
 
+message(STATUS ROS end)

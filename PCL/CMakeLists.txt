@@ -1,3 +1,5 @@
+message(STATUS PCL start)
+
 find_package(Eigen3 REQUIRED)
 
 IF(EIGEN3_FOUND)
@@ -5,6 +7,7 @@ INCLUDE_DIRECTORIES( ${EIGEN3_INCLUDE_DIR} )
 ENDIF(EIGEN3_FOUND)
 
 find_package(PCL 1.7 REQUIRED)
+message(STATUS PCL_CONFIG:${PCL_CONFIG})
 
 #set(PCL_INCLUDE_DIRS "/usr/local/include/pcl-1.8")
 
@@ -20,3 +23,4 @@ target_link_libraries(pcl_transport ${PCL_LIBRARIES})
 
 add_executable(pcl_visualizer visualizer.cpp)
 target_link_libraries(pcl_visualizer ${PCL_LIBRARIES})
+message(STATUS PCL end)

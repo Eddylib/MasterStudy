@@ -7,3 +7,4 @@ ENDIF(EIGEN3_FOUND)
 
 add_executable(eigen_matrixAndVertex matrixAndVertex.cpp)
 add_executable(eigen_linerSolver linerSolver.cpp)
+add_executable(eigen_LGSSolve LGSSolve.cpp)

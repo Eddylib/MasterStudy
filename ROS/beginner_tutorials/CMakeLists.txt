@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(beginner_tutorials)
-
+add_compile_options(-std=c++11)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
@@ -9,8 +9,10 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
   message_generation
+  cv_bridge
+  image_transport
 )
-
+find_package(Boost  COMPONENTS thread system REQUIRED)
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
 
@@ -118,6 +120,7 @@ catkin_package(
 # include_directories(include)
 include_directories(
   ${catkin_INCLUDE_DIRS}
+  include
 )
 
 ## Declare a C++ library
@@ -213,16 +216,10 @@ target_link_libraries(ros_logetic_calib_talker ${catkin_LIBRARIES})
 add_dependencies(ros_logetic_calib_talker beginner_tutorials_generate_messages_cpp)
 
 
-add_executable(ros_katti_0_2_calib src/calib_dataset_0_2.cpp)
-target_link_libraries(ros_katti_0_2_calib ${catkin_LIBRARIES})
-add_dependencies(ros_katti_0_2_calib beginner_tutorials_generate_messages_cpp)
+add_executable(ros_image_catcher src/camera_catch.cpp)
+target_link_libraries(ros_image_catcher ${catkin_LIBRARIES})
+add_dependencies(ros_image_catcher beginner_tutorials_generate_messages_cpp)
 
-
-add_executable(ros_katti_3_calib src/calib_dataset_3.cpp)
-target_link_libraries(ros_katti_3_calib ${catkin_LIBRARIES})
-add_dependencies(ros_katti_3_calib beginner_tutorials_generate_messages_cpp)
-
-
-add_executable(ros_katti_4_12_calib src/calib_dataset_4_12.cpp)
-target_link_libraries(ros_katti_4_12_calib ${catkin_LIBRARIES})
-add_dependencies(ros_katti_4_12_calib beginner_tutorials_generate_messages_cpp)
+add_executable(ros_mvcamera_image_raw src/mvcamera.cpp)
+target_link_libraries(ros_mvcamera_image_raw MVSDK ${catkin_LIBRARIES})
+add_dependencies(ros_mvcamera_image_raw beginner_tutorials_generate_messages_cpp)
